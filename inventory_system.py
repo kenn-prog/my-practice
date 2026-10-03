@@ -15,9 +15,27 @@ products = [
 ]
 
 def add_product(products):
-    user_input = print("Enter product name: ")
-    if user_input in products:
-        print("The product is exits")
+    user_input = input("Enter product name: ")
+    if user_input in products["name"]:
+        print(f"The {user_input} is exists in the products")
+        add = int(input("Enter add quantity: "))
+        total = add + products[quantity.value]
+
+        print("total")
+    else:
+        category = input("Enter category: ")
+        quantity = input("Enter quantity: ")
+        price = input("Enter price ")
+
+        product = {
+            "name":user_input,
+            "category":category,
+            "quantity":quantity,
+            "price":price
+        }
+        products.append(product)
+
+
 
 def view_product(products):
     pass
@@ -32,9 +50,9 @@ def delete_product(products):
     pass
 
 def menu():
-    print("=*20")
+    print("="*20)
     print("SCHOOL SUPPLY INVENTORY SYSTEM".center(20))
-    print("=*20")
+    print("="*20)
 
     print("1. Add Product")
     print("2. View Products")
@@ -51,7 +69,7 @@ def main(products):
 
         menu()
 
-        choice = print("Choose:")
+        choice = input("Choose:")
 
         if choice == "1":
             add_product(products)
