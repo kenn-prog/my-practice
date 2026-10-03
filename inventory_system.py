@@ -15,30 +15,42 @@ products = [
 ]
 
 def add_product(products):
-    user_input = input("Enter product name: ")
-    if user_input in products["name"]:
-        print(f"The {user_input} is exists in the products")
-        add = int(input("Enter add quantity: "))
-        total = add + products[quantity.value]
+    user_input = input("Enter product name: ").lower()
 
-        print("total")
-    else:
-        category = input("Enter category: ")
-        quantity = input("Enter quantity: ")
-        price = input("Enter price ")
+    for product in products:
+        if product["name"].lower() == user_input:
+            print(f"The {user_input} already exists in the products.")
 
-        product = {
-            "name":user_input,
-            "category":category,
-            "quantity":quantity,
-            "price":price
-        }
-        products.append(product)
+            add = int(input("Enter add quantity: "))
 
+            product["quantity"] += add
 
+            print(f"New total quantity: {product['quantity']}")
+            return
+
+    category = input("Enter category: ")
+    quantity = int(input("Enter quantity: "))
+    price = float(input("Enter price: "))
+
+    product = {
+        "name": user_input,
+        "category": category,
+        "quantity": quantity,
+        "price": price
+    }
+
+    products.append(product)
+
+    print("Product added successfully.")
 
 def view_product(products):
-    pass
+    for number, product in enumerate(products, start=1):
+        print(f"{number}. {product["name"]}")
+
+    choice = input("Enter the name of the product: ").lower()
+    for product in products:
+        if choice == product["name"]:
+            print(f"name:{product['name']}\ncategory:{product['category']}\nwuantity:{product['quantity']}\nprice:{product["price"]}")
 
 def search_product(products):
     pass
